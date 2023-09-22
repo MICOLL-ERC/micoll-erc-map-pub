@@ -1,0 +1,15 @@
+Django==4.2.2
+django-cors-headers==4.1.0
+psycopg2-binary>=2.8
+asgiref==3.7.2
+backports.zoneinfo==0.2.1
+numpy
+pandas
+powerline-status==2.7
+python-dateutil
+pytz
+six
+sqlparse==0.4.4
+tqdm
+typing_extensions==4.6.3
+tzdata

@@ -1,0 +1,57 @@
+/*
+    Author: Fabio Giachelle
+    Date: 19/06/2023
+    Description: Custom CSS file
+ */
+
+.img{
+    max-height: 45vh;
+    max-width: 95vw;
+    width: auto;
+    height: auto;
+}
+
+.h1{
+    text-align: center;
+}
+
+#container{
+        margin-top: 5em !important;
+}
+
+.logo{
+    max-height: 50px;
+}
+
+.text-align-justified{
+    text-align: justify;
+}
+
+/* Login/Sign in */
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

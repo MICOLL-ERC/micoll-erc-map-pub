@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="MICOLL ERC project interactive digital maps">
+    <meta name="author" content="Fabio Giachelle">
+    <title>MICOLL ERC - Maps</title>
+
+    {% load static %}
+
+      <!-- Leaflet  -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+</head>
+<body>
+{% csrf_token %}
+<div id="app"></div>
+
+<!-- Bootstrap bundle JS -->
+{% if deploy_mode == "DEV"  %}
+    <script src="{% static 'js/bundle/development/bundle.js' %}"></script>
+{% else  %}
+    <script src="{% static 'js/bundle/production/bundle.js' %}"></script>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,29 @@
+# Use postgres/postgres user/password credentials
+version: '3.1'
+
+services:
+
+  postgis:
+    image: postgis/postgis
+    ports:
+      - 127.0.0.1:5445:5432
+    volumes:
+      - ./database/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+      - ./database/micoll_erc_map_map_user.sql:/docker-entrypoint-initdb.d/micoll_erc_map_map_user.sql
+      - ./database/micoll_erc_map_map_waypoint.sql:/docker-entrypoint-initdb.d/micoll_erc_map_map_waypoint.sql
+      - ./database/micoll_erc_map_map_route_type.sql:/docker-entrypoint-initdb.d/micoll_erc_map_map_route_type.sql
+      - ./database/micoll_erc_map_map_waypoint_type.sql:/docker-entrypoint-initdb.d/micoll_erc_map_map_waypoint_type.sql
+    environment:
+      POSTGRES_PASSWORD: postgres
+
+  webapp:
+    build: .
+
+    volumes:
+      - .:/code
+    ports:
+      - 127.0.0.1:8000:8000
+    command: bash -c 'while !</dev/tcp/postgis/5432; do sleep 1; done; pip install psycopg2-binary && python ./backend/project/manage.py migrate && python ./backend/project/manage.py runserver 0.0.0.0:8000 --insecure'
+
+    depends_on:
+      - postgis
